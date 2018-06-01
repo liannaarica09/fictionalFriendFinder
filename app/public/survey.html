@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fictional Friend Finder Survey</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+
+    <style>
+        body {
+            font-family: georgia, 'times new roman', times, serif;
+            font-size: 100%;
+            background-color: #fff;
+            color: #43453A;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            margin: 0 1rem;
+            background-color: aliceblue;
+            display: grid;
+            grid-template-rows: 5fr minmax(50px, 150px) max-content auto 1fr;
+            grid-template-rows: auto;
+            justify-items: center;
+            height: 100vh;
+        }
+
+        .modal {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 25px;
+            -webkit-box-shadow: 0px 0px 48px 1px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 48px 1px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 48px 1px rgba(0, 0, 0, 0.75);
+            overflow: auto;
+            height: 90%;
+        }
+
+        .modal img {
+            max-height: 20vh;
+            max-width: 100%;
+        }
+
+        #matches {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-gap: 2rem;
+            width: auto;
+        }
+
+        .off {
+            display: none;
+        }
+
+        .on {
+            display: block;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Survey</h1>
+    <h2>Answer these questions for you current favorite character and we'll recommend a new fictional friend for you!</h2>
+
+    <form>
+        <label for="recomender">Your Name:</label>
+        <br>
+        <input type="text" id="recomender">
+        <br>
+
+        <label for="charName">Character's Name:</label>
+        <br>
+        <input type="text" id="charName">
+        <br>
+
+        <label for="book">Book/Series:</label>
+        <br>
+        <input type="text" id="book">
+        <br>
+
+        <label for="author">Author:</label>
+        <br>
+        <input type="text" id="author">
+        <br>
+
+        <label for="picture">Link to a picture of character or book:</label>
+        <br>
+        <input type="text" id="picture">
+        <br>
+
+        <lable for="q1">Is always ready for an adventure.</lable>
+        <br>
+        <select id="q1">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q2">Usually the smartest person in the room.</lable>
+        <br>
+        <select id="q2">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q3">Practical to a fault.</lable>
+        <br>
+        <select id="q3">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q4">Always stands up for what they believe in.</lable>
+        <br>
+        <select id="q4">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q5">Is always cheerful.</lable>
+        <br>
+        <select id="q5">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q6">Just wants to be normal.</lable>
+        <br>
+        <select id="q6">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q7">Is funny.</lable>
+        <br>
+        <select id="q7">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q8">Is tough.</lable>
+        <br>
+        <select id="q8">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q9">Takes everything seriously.</lable>
+        <br>
+        <select id="q9">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <lable for="q10">Is compassionate.</lable>
+        <br>
+        <select id="q10">
+            <option value=1>1 (Strongly Disagree)</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5 (Strongly Agree)</option>
+        </select>
+        <br>
+
+        <input type="submit" class="submit" value="Submit">
+    </form>
+
+    <div class="centered modal off">
+        <h1>Recommended For You:</h1>
+        <div id="matches"></div>
+        <button id="close">Close</button>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    $(".submit").on("click", function (event) {
+        event.preventDefault();
+
+        // Here we grab the form elements
+        var newFriend = {
+            recomender: $("#recomender").val().trim(),
+            charName: $("#charName").val().trim(),
+            book: $("#book").val().trim(),
+            author: $("#author").val().trim(),
+            picture: $("#picture").val().trim(),
+            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $(
+                "#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+        };
+
+        $.post("/api/friends", newFriend,
+            function (data) {
+                console.log('asdfasfd');
+
+                for (i = 0; i < data.length; i++) {
+                    var charDiv = $("<div>");
+                    var picture = $("<img>");
+
+                    console.log(data[i].charName);
+                    console.log(data[i].book);
+                    console.log(data[i].author);
+                    console.log(data[i].recomender);
+                    charDiv.html("<h3>" + data[i].charName + " from " + data[i].book + " by " + data[i].author +
+                        ".</h3> <img src=" + data[i].picture + ">  <p>Recomended by " + data[i].recomender
+                    );
+                    $("#matches").append(charDiv);
+                }
+
+                $(".modal").addClass("on");
+                $(".modal").removeClass("off");
+
+            });
+    });
+
+    $("#close").on("click", function () {
+        $(".modal").addClass("off");
+        $(".modal").removeClass("on");
+    });
+</script>

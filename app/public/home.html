@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fictional Friend Finder</title>
+    <style>
+        body {
+            font-family: georgia, 'times new roman', times, serif;
+            font-size: 100%;
+            background-color: #fff;
+            color: #43453A;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            margin: 0 1rem;
+            background-color: aliceblue;
+            display: grid;
+            grid-template-rows: 5fr minmax(50px, 150px) max-content auto 1fr;
+            grid-template-rows: auto;
+            justify-items: center;
+            height: 100vh;
+        }
+
+        header h1 {
+            grid-row: 2;
+        }
+
+        header p {
+            grid-row: 3;
+        }
+
+        header div {
+            grid-row: 4;
+        }
+
+        header nav {
+            grid-row: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fictional Friend Finder</h1>
+        <p>Answer a few basic questions to find your new fictional best friend!</p>
+        <div>
+            <a href="/survey">
+                <button>Take the Survey</button>
+            </a>
+        </div>
+
+        <nav>
+            <a href="/api/friends">API Friends List</a>
+            <a href="#">GitHub Repo</a>
+        </nav>
+    </header>
+</body>
+
+</html>
